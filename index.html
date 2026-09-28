@@ -763,7 +763,7 @@ async function unlockData(url){
 }
 /* ---------- boot ---------- */
 async function start(){
-  S.D=await unlockData('data.enc.json?v=1790577747'); if(!S.D) return;
+  S.D=await unlockData('data.enc.json?v=1790580875'); if(!S.D) return;
   S.D.chains.forEach(c=>chainOf[c.cid]=c); seek.max=String(S.D.end);
   const br=S.D.game.breaks.map(b=>`<span style="left:${100*b.t0/S.D.end}%;width:${Math.max(0.4,100*(b.t1-b.t0)/S.D.end)}%"></span>`).join(''); $('#seekbreaks').innerHTML=br;
   for(const p of S.D.roster_seed) S.roster[p.pid]=p;
