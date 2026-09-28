@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Sunday pickup 9/27: replay of the disputed 11:56 goal. Passcode required.">
+<title>Goal Check 11:56</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --ground:#070d18; --panel:#0f1a2c; --panel2:#15233a; --line:#23344f;
+  --ink:#eef3fb; --ink2:#a9b8cf; --ink3:#6f819c;
+  --cyan:#35e0ff; --red:#ff4b55; --green:#2fd27a; --amber:#ffb020; --orange:#ff8a1f; --yellow:#ffd23f; --dark:#3f7cff; --light:#f2f2f2;
+}
+html,body{height:100%}*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--ground);color:var(--ink);font:15px/1.5 Barlow,system-ui,sans-serif;padding-block:18px 40px;padding-inline:16px;margin:0}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:16px}
+.cond{font-family:"Barlow Condensed",Barlow,system-ui,sans-serif}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px}
+header h1{margin:0;font:800 30px/1 "Barlow Condensed",sans-serif;letter-spacing:.02em;text-transform:uppercase}
+header h1 span{color:var(--cyan)}
+header p{margin:4px 0 0;color:var(--ink2);max-width:62ch}
+.stage{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;user-select:none;touch-action:none}
+.stage video,.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage video{object-fit:fill;transition:opacity .6s;will-change:transform}
+#gl{cursor:grab}
+#gl.drag{cursor:grabbing}
+/* broadcast graphics */
+.bug{position:absolute;top:3.2%;left:2.4%;display:flex;align-items:stretch;font:700 clamp(11px,1.7vw,19px)/1 "Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase;pointer-events:none;box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.bug>*{padding:.42em .7em}
+.bug .tag{background:var(--yellow);color:#111}
+.bug .clk{background:rgba(10,18,32,.88);color:var(--ink);font-variant-numeric:tabular-nums;min-width:6.2em}
+.bug .mode{background:rgba(10,18,32,.72);color:var(--ink2)}
+.verdict{position:absolute;left:2.4%;bottom:5%;display:flex;align-items:stretch;font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;pointer-events:none;transform:translateX(-120%);transition:transform .55s cubic-bezier(.2,.9,.3,1.15);box-shadow:0 4px 18px rgba(0,0,0,.45)}
+.verdict.on{transform:none}
+.verdict .v1{background:var(--red);color:#fff;font-weight:800;font-size:clamp(16px,3vw,34px);padding:.25em .55em;letter-spacing:.04em;display:flex;align-items:center}
+.verdict .v2{background:rgba(10,18,32,.9);padding:.35em .8em;display:grid;align-content:center}
+.verdict .v2 b{font-size:clamp(12px,1.9vw,22px);font-weight:700;letter-spacing:.03em;color:var(--ink)}
+.verdict .v2 small{font:500 clamp(10px,1.3vw,14px)/1.2 Barlow,sans-serif;text-transform:none;color:var(--ink2)}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.flash.go{animation:fl .5s ease-out}
+@keyframes fl{0%{opacity:.75}100%{opacity:0}}
+.hint{position:absolute;right:2.4%;bottom:5%;font:600 clamp(10px,1.3vw,14px)/1 "Barlow Condensed",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);background:rgba(10,18,32,.7);padding:.5em .7em;border-radius:3px;pointer-events:none;opacity:0;transition:opacity .4s}
+.hint.on{opacity:1}
+.bigplay{position:absolute;inset:0;margin:auto;width:84px;height:84px;border-radius:50%;border:0;background:rgba(10,18,32,.72);color:#fff;cursor:pointer;display:grid;place-items:center}
+.bigplay svg{width:36px;height:36px;margin-left:5px}
+/* controls */
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.grp .lbl{font:600 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-right:4px}
+button.b{font:600 15px/1 "Barlow Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:9px 13px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+button.b:hover{border-color:#3a5378}
+button.b[aria-pressed=true]{background:var(--cyan);border-color:var(--cyan);color:#04141c}
+button.b svg{width:15px;height:15px}
+button.b:disabled{opacity:.4;cursor:default}
+label.tg{display:inline-flex;align-items:center;gap:6px;font:600 14px/1 "Barlow Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);cursor:pointer;padding:6px 4px}
+label.tg input{accent-color:var(--cyan);width:16px;height:16px}
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.facts>div{background:var(--panel);padding:14px 16px;display:grid;gap:4px;align-content:start}
+.facts .k{font:600 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.facts .n{font:700 28px/1.05 "Barlow Condensed",sans-serif;font-variant-numeric:tabular-nums}
+.facts .n.red{color:var(--red)} .facts .n.gr{color:var(--green)} .facts .n.am{color:var(--amber)} .facts .n.cy{color:var(--cyan)}
+.facts .s{color:var(--ink2);font-size:13.5px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 16px}
+summary{cursor:pointer;font:600 16px/1.3 "Barlow Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase}
+details ul{margin:10px 0 2px;padding-left:20px;color:var(--ink2);display:grid;gap:6px;max-width:80ch}
+.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--ink2);font-size:13.5px}
+.legend i{display:inline-block;width:14px;height:4px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.legend i.dot{width:10px;height:10px;border-radius:50%}
+@media (max-width:560px){.hint,.verdict .v2 small{display:none}header h1{font-size:24px}.bigplay{width:64px;height:64px}button.b{padding:8px 10px;font-size:14px}}
+</style>
+</head>
+<body>
+<div id="lockgate" hidden style="min-height:100vh;display:grid;place-items:center;padding:16px">
+  <div style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:28px 24px;max-width:380px;width:100%;text-align:center">
+    <h1 style="margin:0 0 8px;font:800 30px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Goal check 11:56</h1>
+    <p style="color:var(--ink2);margin:0 0 14px">For the Sunday pickup players. Enter the passcode to open the replay.</p>
+    <form id="lockform" style="display:flex;gap:8px"><input id="lockin" type="password" placeholder="Passcode" aria-label="Passcode" autocomplete="current-password" style="flex:1;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--ground);color:var(--ink);font:400 15px Barlow,sans-serif"><button class="b" type="submit">Open</button></form>
+    <p id="lockmsg" style="min-height:1.2em;margin:10px 0 0;color:var(--amber)"></p>
+  </div>
+</div>
+<div class="wrap" hidden>
+  <header>
+    <div>
+      <h1>Goal check <span>·</span> 11:56:06</h1>
+      <p>Rule: a goal counts only if it is shot from inside the cone line, between that line and the goal line (底线). The line runs across the field between two cones, one on each side. Dark team shot from the right. The replay freezes on the strike, lights up the cones, draws the line and lets you turn the camera.</p>
+    </div>
+  </header>
+
+  <div class="stage" id="stage">
+    <video id="vid" src="clip.mp4" playsinline muted preload="auto"></video>
+    <canvas id="gl"></canvas>
+    <div class="flash" id="flash"></div>
+    <div class="bug"><span class="tag">Replay</span><span class="clk" id="clk">11:56:03.6</span><span class="mode" id="mode">Broadcast</span></div>
+    <div class="verdict" id="verdict">
+      <div class="v1">Outside</div>
+      <div class="v2"><b id="vtxt">Shot from behind the cone line</b><small>Planted foot about 4.6 m farther from goal than the line</small></div>
+    </div>
+    <div id="errline" hidden style="position:absolute;left:2%;top:14%;right:2%;background:#ff4b55;color:#fff;padding:6px 10px;font:600 13px Barlow,sans-serif;border-radius:3px"></div>
+    <div class="hint" id="hint">Drag to turn · scroll to zoom</div>
+    <button class="bigplay" id="bigplay" aria-label="Play replay"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l15 8-15 8z"/></svg></button>
+  </div>
+
+  <div class="bar">
+    <div class="grp">
+      <button class="b" id="replay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Replay</button>
+      <button class="b" id="cont" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l15 8-15 8z"/></svg>Watch ball go in</button>
+    </div>
+    <div class="grp" id="cams">
+      <span class="lbl">Camera</span>
+      <button class="b" data-cam="broadcast" aria-pressed="true">Broadcast</button>
+      <button class="b" data-cam="line">Along the line</button>
+      <button class="b" data-cam="top">Top down</button>
+      <button class="b" data-cam="behind">Behind goal</button>
+      <button class="b" data-cam="field">Whole field</button>
+    </div>
+    <div class="grp">
+      <label class="tg"><input type="checkbox" id="showLines" checked>Lines</label>
+      <label class="tg"><input type="checkbox" id="showVideo" checked>Real frame</label>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot" style="background:var(--orange)"></i>Cones (big halos: the two that set the line)</span>
+    <span><i style="background:var(--cyan)"></i>Cone line across the field; shaded zone is where shots count</span>
+    <span><i style="background:#fff"></i>Goal line (底线)</span>
+    <span><i style="background:var(--red)"></i>Shooter's distance behind the line</span>
+    <span><i class="dot" style="background:var(--dark)"></i>Dark team</span>
+    <span><i class="dot" style="background:var(--light)"></i>Light team</span>
+  </div>
+
+  <div class="facts">
+    <div><span class="k">Verdict</span><span class="n red">Outside</span><span class="s">He struck the ball from behind the cone line, so by the rule it should not count.</span></div>
+    <div><span class="k">Behind the line by</span><span class="n" id="fIn">4.6 m</span><span class="s">Every camera setting we tried gives 4.3 to 4.8 m. It is not close.</span></div>
+    <div><span class="k">Cone line to goal line</span><span class="n cy" id="fLine">10.5 m</span><span class="s">Shooter was <span id="fDist">15.2 m</span> from the goal line when he hit it.</span></div>
+    <div><span class="k">Strike</span><span class="n">11:56:06.6</span><span class="s">Ball reaches the goal at about 11:56:07.4. Video time 1:39:20.</span></div>
+  </div>
+
+  <details>
+    <summary>How this was measured</summary>
+    <ul>
+      <li>Check you can do by eye: in the frozen frame, the cyan line runs straight between the two cones. A straight line on the grass is also straight in the video. The shooter's planted foot is about 13 px below it, on our side, while the goal is above it. No camera setting can move him across.</li>
+      <li>The cones: the camera stays in one spot and only turns and zooms. We lined up 624 frames from the whole game and found every cone it can see. The right cone sits just off the edge of the strike frame and was seen in 54 frames. Its partner by the far fence was seen in 5 frames. Both are the same distance (about 10.5 m) from the goal line.</li>
+      <li>The right-side cones on our side of the pitch lie on one straight line (within 8 cm), which gives the direction of the pitch.</li>
+      <li>Camera: zoom (focal length about 1,385 px) and tilt (horizon at about 353 px) were measured from how the view shifts as the camera pans. Camera height (about 2.4 m) came from the players' heights.</li>
+      <li>The distance in metres depends on that calibration. Across the range we measured, he was 4.3 to 4.8 m behind the line.</li>
+      <li>Players in 3D are avatars in team colours at their real positions. The grass is the real frame laid onto the ground.</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+window.addEventListener('error', (e) => { const d = document.getElementById('errline'); if (d) { d.hidden = false; d.textContent = /WebGL/i.test(e.message || '') ? 'The 3D replay needs WebGL, which is turned off in this browser. In Chrome: Settings, System, turn on "Use graphics acceleration", then relaunch. Or open this page in Safari or on your phone.' : 'Page error: ' + (e.message || e.type); } });
+window.addEventListener('unhandledrejection', (e) => { const d = document.getElementById('errline'); if (d) { d.hidden = false; d.textContent = 'Page error: ' + (e.reason && e.reason.message || e.reason); } });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+window.__boot = function (S) {
+  const $ = (id) => document.getElementById(id);
+  const stage = $('stage'), vid = $('vid'), cv = $('gl');
+  const CYAN = 0x35e0ff, GREEN = 0x2fd27a, ORANGE = 0xff8a1f;
+  const K = S.cam, U = S.u, N = S.n, C0 = S.c0, G = S.goal;
+  const W2 = (x, y, z) => new THREE.Vector3(x, y, -z); // ground (X right, Z forward) + height -> three
+  const PT = (a, c) => [C0[0] + U[0] * a + N[0] * c, C0[1] + U[1] * a + N[1] * c]; // pitch coords (along, across) -> ground
+  const up3 = (v) => new THREE.Vector3(v[0], 0, -v[1]);
+
+  // ---------- renderer / camera ----------
+  const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+  const scene = new THREE.Scene();
+  const vfov = 2 * Math.atan((K.H / 2) / K.f) * 180 / Math.PI;
+  const cam = new THREE.PerspectiveCamera(vfov, 16 / 9, 0.1, 500);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x445533, 0.95));
+  const sun = new THREE.DirectionalLight(0xffffff, 0.55); sun.position.set(-20, 40, 10); scene.add(sun);
+
+  // ---------- world (only while the 3D view shows) ----------
+  const world = new THREE.Group(); scene.add(world);
+  const T = S.tex, tw = T.X1 - T.X0, td = T.Z1 - T.Z0;
+  const base = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshBasicMaterial({ color: S.grass }));
+  base.rotation.x = -Math.PI / 2; base.position.set(8, -0.02, -40); world.add(base);
+  const texture = new THREE.TextureLoader().load('ground.jpg', () => render());
+  texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(tw, td), new THREE.MeshBasicMaterial({ map: texture }));
+  ground.rotation.x = -Math.PI / 2; ground.position.copy(W2((T.X0 + T.X1) / 2, -0.01, (T.Z0 + T.Z1) / 2)); world.add(ground);
+  const sky = (() => { const c = document.createElement('canvas'); c.width = 2; c.height = 256; const g = c.getContext('2d');
+    const gr = g.createLinearGradient(0, 0, 0, 256); gr.addColorStop(0, '#5f8fc4'); gr.addColorStop(1, '#cfe0ee'); g.fillStyle = gr; g.fillRect(0, 0, 2, 256);
+    return new THREE.CanvasTexture(c); })();
+
+  // goal: goal line runs across the pitch (along N), mouth faces back down the pitch (-U)
+  const postMat = new THREE.MeshLambertMaterial({ color: 0xf4f4f4 });
+  const tube = (a, b, r) => {
+    const d = new THREE.Vector3().subVectors(b, a), m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, d.length(), 10), postMat);
+    m.position.copy(a).addScaledVector(d, 0.5); m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d.clone().normalize()); return m;
+  };
+  const gp = (da, dc, h) => { const p = PT(G.along + da, G.across + dc); return W2(p[0], h, p[1]); };
+  const hw = G.width / 2, gh = G.height, gd = G.depth;
+  const goal = new THREE.Group();
+  [[gp(0, -hw, 0), gp(0, -hw, gh)], [gp(0, hw, 0), gp(0, hw, gh)], [gp(0, -hw, gh), gp(0, hw, gh)],
+   [gp(0, -hw, gh), gp(gd, -hw, 0)], [gp(0, hw, gh), gp(gd, hw, 0)], [gp(gd, -hw, 0), gp(gd, hw, 0)]].forEach(([a, b]) => goal.add(tube(a, b, 0.05)));
+  const netGeo = new THREE.BufferGeometry().setFromPoints([gp(0, -hw, gh), gp(gd, -hw, 0), gp(gd, hw, 0), gp(0, -hw, gh), gp(gd, hw, 0), gp(0, hw, gh)]);
+  goal.add(new THREE.Mesh(netGeo, new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.4, side: THREE.DoubleSide })));
+  world.add(goal);
+
+  // real cones: right sideline (seen in the video) + the two goal-post cones (5 yd outside each post, placed from your description)
+  const coneMesh = (c, ghost) => {
+    const m = new THREE.Mesh(new THREE.ConeGeometry(0.24, 0.3, 24), new THREE.MeshLambertMaterial({ color: ORANGE, emissive: 0x552200, transparent: ghost, opacity: ghost ? 0.85 : 1 }));
+    m.position.copy(W2(c[0], 0.15, c[1])); world.add(m);
+  };
+  S.side_cones.forEach((c) => coneMesh(c, false));
+  S.line_cones.forEach((c) => coneMesh(c, false));
+
+  // players
+  const skin = new THREE.MeshLambertMaterial({ color: 0xc99a78 }), shorts = new THREE.MeshLambertMaterial({ color: 0x1c1f26 });
+  const players = [];
+  S.players.forEach((p) => {
+    const shirt = new THREE.MeshLambertMaterial({ color: p.team === 'dark' ? 0x2f5fd0 : 0xf4f4f4 });
+    const g = new THREE.Group();
+    const part = (geo, mat, x, y) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, 0); g.add(m); };
+    [-0.1, 0.1].forEach((x) => part(new THREE.CylinderGeometry(0.065, 0.055, 0.82, 10), skin, x, 0.41));
+    part(new THREE.CylinderGeometry(0.19, 0.17, 0.2, 14), shorts, 0, 0.9);
+    part(new THREE.CylinderGeometry(0.2, 0.18, 0.52, 14), shirt, 0, 1.25);
+    [-0.25, 0.25].forEach((x) => part(new THREE.CylinderGeometry(0.05, 0.045, 0.5, 8), shirt, x, 1.24));
+    part(new THREE.SphereGeometry(0.12, 16, 12), skin, 0, 1.64);
+    g.position.copy(W2(p.x, 0, p.z)); world.add(g); players.push(g);
+    const ring = new THREE.Mesh(new THREE.RingGeometry(0.3, 0.38, 32), new THREE.MeshBasicMaterial({ color: p.team === 'dark' ? 0x3f7cff : 0xf2f2f2, transparent: true, opacity: 0.9 }));
+    ring.rotation.x = -Math.PI / 2; ring.position.copy(W2(p.x, 0.02, p.z)); world.add(ring);
+  });
+  const ball = new THREE.Mesh(new THREE.SphereGeometry(0.11, 20, 14), new THREE.MeshLambertMaterial({ color: 0xffffff }));
+  ball.position.copy(W2(S.ball[0], 0.11, S.ball[1])); world.add(ball);
+
+  // ---------- analysis overlay (drawn on the real frame and in 3D) ----------
+  const over = new THREE.Group(); scene.add(over);
+  // flat strip on the grass from ground point a to b; scale.y animates the draw
+  function strip(a, b, w, color, op, y = 0.03) {
+    const dx = b[0] - a[0], dz = b[1] - a[1], L = Math.hypot(dx, dz);
+    const geo = new THREE.PlaneGeometry(w, L); geo.translate(0, L / 2, 0);
+    const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color, transparent: true, opacity: op, depthWrite: false }));
+    m.rotation.x = -Math.PI / 2;
+    const piv = new THREE.Group(); piv.add(m); piv.position.copy(W2(a[0], y, a[1])); piv.rotation.y = Math.atan2(-dx, dz);
+    piv.renderOrder = m.renderOrder = 2; over.add(piv); return m;
+  }
+  const RED = 0xff4b55;
+  const along = (p) => U[0] * (p[0] - C0[0]) + U[1] * (p[1] - C0[1]);
+  const shA = along(S.shooter);
+  const [cr, cl] = S.line_cones;
+  const dl = [cl[0] - cr[0], cl[1] - cr[1]], dlen = Math.hypot(dl[0], dl[1]); dl[0] /= dlen; dl[1] /= dlen;
+  const ext = (p, k) => [p[0] + dl[0] * k, p[1] + dl[1] * k];
+  // right sideline (dim), the goal line (底线) and the shooting line through the two cones
+  const side = strip(S.sideline.p0, S.sideline.p1, 0.1, CYAN, 0.3);
+  const goalLine = strip(S.goal_line.p0, S.goal_line.p1, 0.14, 0xffffff, 0.85);
+  const shootGlow = strip(ext(cr, -3), ext(cl, 3), 0.9, CYAN, 0.25), shoot = strip(ext(cr, -3), ext(cl, 3), 0.2, CYAN, 1, 0.035);
+  // scoring zone: between the cone line and the goal line
+  const zc = [(cr[0] + cl[0]) / 2, (cr[1] + cl[1]) / 2], gcen = PT(G.along, G.across);
+  const nz = [gcen[0] - zc[0] - dl[0] * ((gcen[0] - zc[0]) * dl[0] + (gcen[1] - zc[1]) * dl[1]), gcen[1] - zc[1] - dl[1] * ((gcen[0] - zc[0]) * dl[0] + (gcen[1] - zc[1]) * dl[1])];
+  const zoneFill = strip(zc, [zc[0] + nz[0], zc[1] + nz[1]], dlen + 6, CYAN, 0.1, 0.02);
+  const glowLines = [side, goalLine, shootGlow, shoot, zoneFill];
+  // cone highlights: halo + light pillar; the two line cones get big ones
+  const fx = (c, t, big) => {
+    const halo = new THREE.Mesh(new THREE.RingGeometry(big ? 0.6 : 0.45, big ? 0.85 : 0.62, 40), new THREE.MeshBasicMaterial({ color: ORANGE, transparent: true, opacity: 0, depthWrite: false }));
+    halo.rotation.x = -Math.PI / 2; halo.position.copy(W2(c[0], 0.04, c[1])); halo.renderOrder = 3; over.add(halo);
+    const pillar = new THREE.Mesh(new THREE.CylinderGeometry(big ? 0.22 : 0.1, big ? 0.22 : 0.1, big ? 3.2 : 1.2, 16, 1, true), new THREE.MeshBasicMaterial({ color: ORANGE, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide }));
+    pillar.position.copy(W2(c[0], big ? 1.6 : 0.6, c[1])); pillar.renderOrder = 3; over.add(pillar);
+    return { t, halo, pillar, big };
+  };
+  const coneFx = [...S.side_cones.map((c) => fx(c, 0.05, false)), fx(cr, 0.02, true), fx(cl, 0.5, true)];
+  // shooter: ring + distance to the cone line
+  const sh = S.shooter, ft = S.foot_on_line, M = S.margin_m;
+  const sRing = new THREE.Mesh(new THREE.RingGeometry(0.5, 0.68, 40), new THREE.MeshBasicMaterial({ color: RED, transparent: true, opacity: 0, depthWrite: false }));
+  sRing.rotation.x = -Math.PI / 2; sRing.position.copy(W2(sh[0], 0.05, sh[1])); sRing.renderOrder = 4; over.add(sRing);
+  const gap = strip(ft, sh, 0.3, RED, 1, 0.045);
+  const sPillar = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 2.6, 20, 1, true), new THREE.MeshBasicMaterial({ color: RED, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide }));
+  sPillar.position.copy(W2(sh[0], 1.3, sh[1])); sPillar.renderOrder = 4; over.add(sPillar);
+  const mTxt = Math.abs(M).toFixed(1) + ' m ' + (M >= 0 ? 'INSIDE' : 'OUTSIDE');
+  const label = (() => {
+    const c = document.createElement('canvas'); c.width = 640; c.height = 128;
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), depthTest: false }));
+    sp.scale.set(5.6, 1.12, 1); sp.position.copy(W2(sh[0], 3.4, sh[1])); sp.renderOrder = 6;
+    sp.draw = () => { const g = c.getContext('2d'); g.clearRect(0, 0, 640, 128); g.fillStyle = 'rgba(10,18,32,.9)'; g.fillRect(0, 0, 640, 128);
+      g.fillStyle = '#ff4b55'; g.fillRect(0, 0, 14, 128); g.fillStyle = '#fff'; g.font = '800 62px "Barlow Condensed", sans-serif'; g.textBaseline = 'middle';
+      g.fillText(mTxt + ' THE LINE', 34, 66); sp.material.map.needsUpdate = true; };
+    sp.draw(); return sp;
+  })();
+  over.add(label);
+  document.fonts && document.fonts.load('800 62px "Barlow Condensed"').then(() => { label.draw(); render(); });
+  $('fIn').textContent = Math.abs(M).toFixed(1) + ' m';
+  $('fDist').textContent = S.to_goal_line_m.toFixed(1) + ' m';
+  $('fLine').textContent = S.line_dist_m.toFixed(1) + ' m';
+
+  // ---------- camera presets ----------
+  const fwd = new THREE.Vector3(0, -Math.sin(K.th), -Math.cos(K.th));
+  const at = (a, c, h) => { const p = PT(a, c); return W2(p[0], h, p[1]); };
+  const lineMid = [ft[0], ft[1]];
+  const onLine = (k, h) => { const p = ext(lineMid, k); return W2(p[0], h, p[1]); };
+  const midA = (shA + G.along) / 2;
+  const P = {
+    broadcast: { pos: W2(0, K.HC, 0), tgt: W2(0, K.HC, 0).add(fwd.clone().multiplyScalar(40)), fov: vfov, up: new THREE.Vector3(0, 1, 0), name: 'Broadcast' },
+    line: { pos: onLine(-36, 3.2), tgt: onLine(6, 0.3), fov: 40, up: new THREE.Vector3(0, 1, 0), name: 'Along the cone line' },
+    top: { pos: at(midA, G.across - 8, 42), tgt: at(midA, G.across - 8, 0), fov: 50, up: up3(U), name: 'Top down' },
+    behind: { pos: at(G.along + 8, G.across - 10, 5), tgt: at(shA - 6, G.across - 16, 0), fov: 50, up: new THREE.Vector3(0, 1, 0), name: 'Behind goal' },
+    field: { pos: at(-45, G.across + 2, 45), tgt: at(8, G.across - 4, 0), fov: 50, up: new THREE.Vector3(0, 1, 0), name: 'Whole field' },
+  };
+  const view = { pos: P.broadcast.pos.clone(), tgt: P.broadcast.tgt.clone(), up: P.broadcast.up.clone(), fov: vfov };
+  let camKey = 'broadcast', anim = null;
+
+  // broadcast zoom: video (CSS) and 3D camera (view offset) zoom together
+  const ZO = { x: 0.62, y: 0.39 };
+  const zoom = { z: 1, to: 1 };
+  vid.style.transformOrigin = (ZO.x * 100) + '% ' + (ZO.y * 100) + '%';
+  function applyZoom() {
+    const w = cv.clientWidth, h = cv.clientHeight, z = zoom.z;
+    vid.style.transform = z > 1.001 ? 'scale(' + z + ')' : '';
+    if (camKey === 'broadcast' && z > 1.001) cam.setViewOffset(w * z, h * z, ZO.x * (z - 1) * w, ZO.y * (z - 1) * h, w, h);
+    else cam.clearViewOffset();
+  }
+  function applyView() { cam.position.copy(view.pos); cam.fov = view.fov; cam.up.copy(view.up).normalize(); cam.lookAt(view.tgt); cam.updateProjectionMatrix(); }
+  function render() {
+    players.forEach((m) => { m.rotation.y = Math.atan2(cam.position.x - m.position.x, cam.position.z - m.position.z); });
+    renderer.render(scene, cam);
+  }
+  function resize() { const r = stage.getBoundingClientRect(); renderer.setSize(r.width, r.height, false); cam.aspect = r.width / r.height; applyView(); applyZoom(); render(); }
+  new ResizeObserver(resize).observe(stage);
+
+  const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const pressCam = (key) => document.querySelectorAll('#cams [data-cam]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.cam === key));
+  function goCam(key, ms = 1500) {
+    camKey = key; const to = P[key]; $('bigplay').hidden = true; pressCam(key); $('mode').textContent = to.name;
+    if (key !== 'broadcast') { setReal(false); zoom.to = zoom.z = 1; applyZoom(); }
+    const from = { pos: view.pos.clone(), tgt: view.tgt.clone(), up: view.up.clone(), fov: view.fov }, t0 = performance.now();
+    anim = (now) => {
+      const k = ease(Math.min(1, (now - t0) / ms));
+      view.pos.lerpVectors(from.pos, to.pos, k); view.tgt.lerpVectors(from.tgt, to.tgt, k); view.up.lerpVectors(from.up, to.up, k); view.fov = from.fov + (to.fov - from.fov) * k;
+      applyView();
+      if (k >= 1) { anim = null; if (key === 'broadcast') { setReal($('showVideo').checked); if (phase === 'frozen') zoom.to = 1.6; } }
+    };
+    $('hint').classList.toggle('on', key !== 'broadcast');
+  }
+  function setReal(on) { vid.style.opacity = on ? 1 : 0; world.visible = !on; scene.background = on ? null : sky; }
+
+  // ---------- replay sequence ----------
+  const SHOT = S.shot_clip_t, c0 = S.clock0.split(':').map(Number);
+  const clockAt = (t) => { let s = c0[0] * 3600 + c0[1] * 60 + c0[2] + t; const h = Math.floor(s / 3600); s -= h * 3600; const m = Math.floor(s / 60); s -= m * 60;
+    return `${h}:${String(m).padStart(2, '0')}:${s.toFixed(1).padStart(4, '0')}`; };
+  let phase = 'idle', drawT = 0;
+  function setOverlay(k) { // k in [0,1]
+    over.visible = $('showLines').checked && k > 0;
+    const kl = Math.min(1, k / 0.6);
+    glowLines.forEach((m) => { m.scale.y = Math.max(0.001, kl); });
+    coneFx.forEach((c) => { const on = kl >= c.t ? 1 : 0; c.halo.material.opacity = on; c.pillar.material.opacity = (c.big ? 0.45 : 0.3) * on; });
+    const k2 = Math.max(0, (k - 0.6) / 0.4);
+    sRing.material.opacity = k2; sPillar.material.opacity = 0.35 * k2; gap.scale.y = Math.max(0.001, k2); gap.visible = label.visible = k2 > 0.02;
+  }
+  function startReplay() {
+    $('bigplay').hidden = true; $('verdict').classList.remove('on'); $('cont').disabled = true;
+    if (camKey !== 'broadcast') goCam('broadcast', 900);
+    setReal(true); setOverlay(0); phase = 'play';
+    zoom.z = 1; zoom.to = 1.7; applyZoom(); vid.currentTime = 0; vid.playbackRate = 0.5;
+    vid.play().catch((e) => { console.warn('play blocked', e); $('bigplay').hidden = false; phase = 'idle'; });
+  }
+  function freeze() {
+    vid.pause(); vid.currentTime = SHOT; phase = 'widen'; drawT = performance.now(); zoom.to = 1.6;
+    const fl = $('flash'); fl.classList.remove('go'); void fl.offsetWidth; fl.classList.add('go');
+  }
+  $('bigplay').onclick = startReplay; $('replay').onclick = startReplay;
+  $('cont').onclick = () => { goCam('broadcast', 700); setOverlay(0); $('verdict').classList.remove('on'); phase = 'after'; zoom.to = 1.7; vid.playbackRate = 1; vid.play(); };
+  vid.addEventListener('ended', () => { if (phase === 'after') phase = 'done'; });
+  document.querySelectorAll('#cams [data-cam]').forEach((b) => b.onclick = () => {
+    if (phase !== 'frozen') { vid.pause(); vid.currentTime = SHOT; phase = 'draw'; drawT = performance.now() - 5000; $('verdict').classList.add('on'); $('cont').disabled = false; }
+    goCam(b.dataset.cam);
+  });
+  $('showLines').onchange = () => setOverlay(phase === 'play' || phase === 'after' || phase === 'idle' ? 0 : 1);
+  $('showVideo').onchange = (e) => { if (camKey === 'broadcast') setReal(e.target.checked); };
+
+  // ---------- drag to orbit, wheel to zoom ----------
+  let drag = null;
+  const toFree = () => { if (camKey === 'broadcast') { setReal(false); zoom.to = zoom.z = 1; } camKey = 'free'; applyZoom(); $('mode').textContent = 'Free camera'; pressCam(''); $('hint').classList.add('on'); };
+  cv.addEventListener('pointerdown', (e) => {
+    if (phase === 'play' || phase === 'after' || phase === 'idle') return;
+    toFree(); view.up.set(0, 1, 0);
+    drag = { x: e.clientX, y: e.clientY }; cv.setPointerCapture(e.pointerId); cv.classList.add('drag'); anim = null;
+  });
+  cv.addEventListener('pointermove', (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag = { x: e.clientX, y: e.clientY };
+    const sph = new THREE.Spherical().setFromVector3(view.pos.clone().sub(view.tgt));
+    sph.theta -= dx * 0.006; sph.phi = Math.min(1.52, Math.max(0.06, sph.phi - dy * 0.006));
+    view.pos.copy(view.tgt).add(new THREE.Vector3().setFromSpherical(sph)); applyView();
+  });
+  const endDrag = () => { drag = null; cv.classList.remove('drag'); };
+  cv.addEventListener('pointerup', endDrag); cv.addEventListener('pointercancel', endDrag);
+  cv.addEventListener('wheel', (e) => {
+    if (camKey === 'broadcast' || phase === 'play' || phase === 'idle') return;
+    e.preventDefault();
+    const off = view.pos.clone().sub(view.tgt), l = off.length() * Math.exp(e.deltaY * 0.0012);
+    view.pos.copy(view.tgt).add(off.setLength(Math.min(120, Math.max(3, l)))); applyView();
+  }, { passive: false });
+
+  // ---------- main loop ----------
+  function loop(now) {
+    if (anim) anim(now);
+    if (Math.abs(zoom.z - zoom.to) > 0.002) { zoom.z += (zoom.to - zoom.z) * 0.05; applyZoom(); }
+    if (phase === 'play' && vid.currentTime >= SHOT) freeze();
+    if (phase === 'widen' && now - drawT > 900) { phase = 'draw'; drawT = now; }
+    if (phase === 'draw') {
+      const k = Math.min(1, (now - drawT) / 1800); setOverlay(ease(k));
+      if (k >= 1) {
+        phase = 'frozen'; $('verdict').classList.add('on'); $('cont').disabled = false;
+        setTimeout(() => { if (phase === 'frozen' && camKey === 'broadcast') goCam('line', 2000); }, 2600);
+      }
+    }
+    if (phase === 'frozen') {
+      const s = 1 + 0.08 * Math.sin(now / 260); sRing.scale.set(s, s, 1);
+      coneFx.forEach((c, i) => { const q = 1 + 0.15 * Math.sin(now / 300 + i); c.halo.scale.set(q, q, 1); });
+    }
+    $('clk').textContent = clockAt(vid.currentTime || 0);
+    render(); requestAnimationFrame(loop);
+  }
+  setReal(true); setOverlay(0); resize(); requestAnimationFrame(loop);
+  vid.addEventListener('loadeddata', () => { if (phase === 'idle') vid.currentTime = SHOT; }, { once: true });
+  window.__replay = { goCam, startReplay, freeze, S, view, zoom };
+};
+</script>
+<script>
+(async function () {
+  const u = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  async function dec(pass, E) {
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: u(E.salt), iterations: E.iter, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: u(E.iv) }, key, u(E.ct))));
+  }
+  const wrap = document.querySelector('.wrap'), gate = document.getElementById('lockgate');
+  let E; try { E = await (await fetch('scene.enc.json')).json(); } catch (e) { console.error('scene load failed', e); wrap.hidden = false; const d = document.getElementById('errline'); d.hidden = false; d.textContent = 'The replay data did not load. Reload the page.'; return; }
+  let saved = null; try { saved = localStorage.getItem('pickup927pass'); } catch (e) { console.warn('storage blocked', e); }
+  if (saved) { try { const S = await dec(saved, E); wrap.hidden = false; window.__boot(S); return; } catch (e) { console.warn('saved passcode rejected', e); } }
+  wrap.hidden = true; gate.hidden = false; document.getElementById('lockin').focus();
+  document.getElementById('lockform').addEventListener('submit', async (ev) => {
+    ev.preventDefault(); const pass = document.getElementById('lockin').value.trim(), msg = document.getElementById('lockmsg'); msg.textContent = 'Checking…';
+    try { const S = await dec(pass, E); try { localStorage.setItem('pickup927pass', pass); } catch (e) { console.warn('storage blocked', e); }
+      gate.hidden = true; wrap.hidden = false; window.__boot(S); }
+    catch (e) { msg.textContent = 'Wrong passcode. Try again.'; document.getElementById('lockin').select(); }
+  });
+})();
+</script>
+</body>
+</html>
