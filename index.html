@@ -256,7 +256,7 @@ h2.sec{font:700 1.5rem/1 var(--display);text-transform:uppercase;margin:4px 0 12
       <div class="ctrl"><button id="fixname" hidden>Wrong name?</button><button id="fixwho" hidden>Wrong player outlined?</button></div>
       <div class="fix" id="fixpanel" hidden></div>
       <ul class="plist" id="plist"></ul>
-      <details class="trans" open><summary>What they said <span id="tcount"></span> <span class="hint">subtitles from the sideline audio, tap a line to jump there. Grey lines were heard by only one of two AI passes.</span></summary><input id="tsearch" type="search" placeholder="Search what they said, e.g. 好球, goal, 老谢" aria-label="Search the transcript"><ul class="tlist" id="tlist"></ul></details>
+      <details class="trans" open><summary>What they said <span id="tcount"></span> <span class="hint">subtitles from the sideline audio (AI transcription, Gemini 3.8 Flash), tap a line to jump there.</span></summary><input id="tsearch" type="search" placeholder="Search what they said, e.g. 好球, goal, 老谢" aria-label="Search the transcript"><ul class="tlist" id="tlist"></ul></details>
     </aside>
   </div>
 </div>
@@ -763,7 +763,7 @@ async function unlockData(url){
 }
 /* ---------- boot ---------- */
 async function start(){
-  S.D=await unlockData('data.enc.json?v=1790572748'); if(!S.D) return;
+  S.D=await unlockData('data.enc.json?v=1790577747'); if(!S.D) return;
   S.D.chains.forEach(c=>chainOf[c.cid]=c); seek.max=String(S.D.end);
   const br=S.D.game.breaks.map(b=>`<span style="left:${100*b.t0/S.D.end}%;width:${Math.max(0.4,100*(b.t1-b.t0)/S.D.end)}%"></span>`).join(''); $('#seekbreaks').innerHTML=br;
   for(const p of S.D.roster_seed) S.roster[p.pid]=p;
