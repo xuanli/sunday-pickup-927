@@ -7,6 +7,7 @@
 <meta name="description" content="Sunday pickup 9/27: replay of the disputed 11:56 goal. Passcode required.">
 <title>Goal Check 11:56</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<!--HUD:START--><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Doto:wght@700;900&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap"><link rel="stylesheet" href="../hud.css?v=3"><!--HUD:END-->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap">
 <style>
 :root{
@@ -74,11 +75,86 @@ details ul{margin:10px 0 2px;padding-left:20px;color:var(--ink2);display:grid;ga
 .legend i.dot{width:10px;height:10px;border-radius:50%}
 @media (max-width:560px){.hint,.verdict .v2 small{display:none}header h1{font-size:24px}.bigplay{width:64px;height:64px}button.b{padding:8px 10px;font-size:14px}}
 </style>
+<!--HUD:START--><style>
+:root{--ground:var(--h-bg);--panel:var(--h-panel);--panel2:var(--h-panel2);--line:var(--h-line);--ink:var(--h-ink);--ink2:var(--h-ink2);--ink3:var(--h-ink3);--yellow:var(--h-coral)}
+body{font-family:var(--h-sans)!important;padding-block:34px 70px!important;padding-inline:clamp(16px,3.2vw,44px)!important}
+.wrap{max-width:1240px!important;gap:18px!important}
+header{border-bottom:1px solid var(--h-line);padding-bottom:18px;position:relative;align-items:end!important}
+header::after{content:"";position:absolute;left:0;bottom:-1px;width:120px;height:1px;background:var(--h-coral);box-shadow:0 0 10px var(--h-coral)}
+header h1{font:700 clamp(2.4rem,6vw,4.4rem)/.9 var(--h-disp)!important;letter-spacing:-.01em!important;display:flex;flex-wrap:wrap;align-items:baseline;gap:.25em}
+header h1 span{display:none}
+header h1 .hud-date{display:inline;font:900 1em/.9 var(--h-dot);color:var(--h-coral);text-shadow:0 0 18px rgba(255,90,54,.45)}
+header p{font-size:.95rem;color:var(--h-ink2)!important;max-width:70ch!important;margin-top:12px!important}
+.hud-back{font:500 10.5px var(--h-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--h-ink2);text-decoration:none;border:1px solid var(--h-line2);padding:8px 12px;align-self:start}
+.hud-back:hover{border-color:var(--h-coral);color:#fff}
+/* stage: crop marks, glow, HUD graphics */
+.stage{border-radius:1px!important;box-shadow:0 0 0 1px var(--h-line2),0 40px 90px -40px rgba(255,90,54,.25)}
+.stage::after{content:"";position:absolute;inset:10px;pointer-events:none;z-index:3;opacity:.6;background-image:
+  linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff);
+  background-repeat:no-repeat;background-size:16px 1px,1px 16px,16px 1px,1px 16px,16px 1px,1px 16px,16px 1px,1px 16px;
+  background-position:left top,left top,right top,right top,left bottom,left bottom,right bottom,right bottom}
+.bug{font:500 clamp(9px,1.2vw,12px)/1 var(--h-mono)!important;letter-spacing:.16em!important;box-shadow:none!important}
+.bug>*{padding:.7em .9em!important}
+.bug .tag{background:var(--h-coral)!important;color:#160604!important}
+.bug .tag::before{content:"● ";animation:hud-blink 1.6s steps(2) infinite}
+.bug .clk{background:rgba(6,7,8,.8)!important;font-family:var(--h-mono)!important}
+.bug .mode{background:rgba(6,7,8,.6)!important;color:var(--h-ink2)!important}
+.verdict{box-shadow:0 0 40px rgba(255,75,85,.25)!important}
+.verdict .v1{font-family:var(--h-disp)!important;letter-spacing:.02em!important}
+.verdict .v2 b{font-family:var(--h-disp)!important}
+.verdict .v2 small{font:400 clamp(9px,1.1vw,12px)/1.3 var(--h-mono)!important;letter-spacing:.06em;text-transform:uppercase!important}
+.hint{font-family:var(--h-mono)!important;letter-spacing:.14em!important;border-radius:0!important}
+.bigplay{background:rgba(6,7,8,.55)!important;border:1px solid rgba(255,255,255,.35)!important;box-shadow:0 0 0 6px rgba(255,255,255,.06),0 0 30px rgba(255,90,54,.3)}
+/* controls */
+button.b{font:500 11px/1 var(--h-mono)!important;letter-spacing:.14em!important;border-radius:1px!important;background:transparent!important;border-color:var(--h-line2)!important;padding:10px 13px!important}
+button.b:hover{border-color:var(--h-coral)!important}
+button.b[aria-pressed=true]{background:var(--h-coral)!important;border-color:var(--h-coral)!important;color:#160604!important;box-shadow:0 0 16px rgba(255,90,54,.35)}
+#cams{counter-reset:cam}
+#cams [data-cam]{counter-increment:cam}
+#cams [data-cam]::before{content:counter(cam,decimal-leading-zero);opacity:.55;margin-right:2px}
+.grp .lbl,label.tg{font-family:var(--h-mono)!important;letter-spacing:.16em!important;font-size:10.5px!important}
+label.tg input{accent-color:var(--h-coral)!important}
+.legend{font:400 12px var(--h-mono)!important;letter-spacing:.04em;color:var(--h-ink3)!important}
+/* readouts */
+.facts{border-radius:1px!important;background:var(--h-line)!important}
+.facts>div{background:var(--h-panel)!important;padding:18px 18px 16px!important}
+.facts .k{font:500 10px/1.2 var(--h-mono)!important;letter-spacing:.18em!important}
+.facts .n{font:900 34px/1 var(--h-dot)!important;letter-spacing:.01em}
+.facts .n.red{text-shadow:0 0 16px rgba(255,75,85,.45)}.facts .n.cy{text-shadow:0 0 16px rgba(53,224,255,.35)}
+.facts .s{font-size:13px!important}
+details{border-radius:1px!important;background:var(--h-panel)!important;border-color:var(--h-line)!important}
+summary{font:500 11px var(--h-mono)!important;letter-spacing:.18em!important}
+details ul{font-size:14px}
+.hud-strip{padding:16px 18px 14px}
+.hud-strip .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.hud-strip .bar{position:relative;height:26px;margin:14px 0 8px;border-top:1px solid var(--h-line);border-bottom:1px solid var(--h-line);
+  background:repeating-linear-gradient(90deg,var(--h-panel2) 0 calc(100%/40 - 2px),transparent calc(100%/40 - 2px) calc(100%/40))}
+.hud-strip .zone{position:absolute;left:0;top:3px;bottom:3px;background:repeating-linear-gradient(90deg,#35e0ff 0 calc(100%/21 - 2px),transparent calc(100%/21 - 2px) calc(100%/21));opacity:.75;box-shadow:0 0 14px rgba(53,224,255,.35)}
+.hud-strip .gap{position:absolute;top:3px;bottom:3px;background:repeating-linear-gradient(90deg,#ff4b55 0 6px,transparent 6px 8px);opacity:.85}
+.hud-strip .pin{position:absolute;top:-8px;bottom:-8px;width:2px;background:#fff;box-shadow:0 0 10px #fff}
+.hud-strip .pin.cy{background:#35e0ff;box-shadow:0 0 10px #35e0ff}
+.hud-strip .pin.rd{background:#ff4b55;box-shadow:0 0 10px #ff4b55}
+.hud-strip .ticks{position:relative;height:30px;font:500 10px/1.3 var(--h-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--h-ink2)}
+.hud-strip .ticks span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap;text-align:center}
+.hud-strip .ticks span:first-child{transform:none}
+.hud-strip .ticks b{display:block;font:700 13px var(--h-mono);color:var(--h-ink)}
+#lockgate>div{background:var(--h-panel)!important;border-radius:1px!important;text-align:left!important}
+#lockgate h1{font:700 2.6rem/.95 var(--h-disp)!important}
+#lockin{border-radius:1px!important;background:var(--h-bg)!important;font-family:var(--h-sans)!important}
+#errline{font-family:var(--h-mono)!important;letter-spacing:.04em;border-radius:1px!important}
+@media (max-width:560px){.hud-strip .ticks{font-size:9px}}
+</style><!--HUD:END-->
 </head>
 <body>
+<!--HUD:START--><div class="hud-screen" aria-hidden="true"></div>
+<div class="hud-frame" aria-hidden="true"><span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
+<span class="lab l1">Goal check · file 09 / 27</span><span class="lab l2">Strike 11:56:06.6 <i>✶</i> Outside</span>
+<div class="hud-ruler"><b style="top:0">000</b><b style="top:25%">025</b><b style="top:50%">050</b><b style="top:75%">075</b></div></div>
+<div class="hud-ticker" aria-hidden="true"><div class="run" id="hudrun"></div><div class="tc" id="hudtc">11:56:03.6</div></div><!--HUD:END-->
 <div id="lockgate" hidden style="min-height:100vh;display:grid;place-items:center;padding:16px">
   <div style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:28px 24px;max-width:380px;width:100%;text-align:center">
-    <h1 style="margin:0 0 8px;font:800 30px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Goal check 11:56</h1>
+    <div class="hud-kicker" style="margin-bottom:12px"><b>✶</b> Restricted · players only</div>
+    <h1 style="margin:0 0 8px;font:800 30px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Goal check <span class="hud-date" style="font-family:var(--h-dot);color:var(--h-coral)">11:56</span></h1>
     <p style="color:var(--ink2);margin:0 0 14px">For the Sunday pickup players. Enter the passcode to open the replay.</p>
     <form id="lockform" style="display:flex;gap:8px"><input id="lockin" type="password" placeholder="Passcode" aria-label="Passcode" autocomplete="current-password" style="flex:1;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--ground);color:var(--ink);font:400 15px Barlow,sans-serif"><button class="b" type="submit">Open</button></form>
     <p id="lockmsg" style="min-height:1.2em;margin:10px 0 0;color:var(--amber)"></p>
@@ -87,9 +163,10 @@ details ul{margin:10px 0 2px;padding-left:20px;color:var(--ink2);display:grid;ga
 <div class="wrap" hidden>
   <header>
     <div>
-      <h1>Goal check <span>·</span> 11:56:06</h1>
+      <div class="hud-kicker" style="margin-bottom:12px"><b>✶</b> Replay · disputed goal · Sunday pickup 09/27</div><h1>Goal check <span>·</span> <!--HUD:START--><em class="hud-date" style="font-style:normal">11:56</em><!--HUD:END--></h1>
       <p>Rule: a goal counts only if it is shot from inside the cone line, between that line and the goal line (底线). The line runs across the field between two cones, one on each side. Dark team shot from the right. The replay freezes on the strike, lights up the cones, draws the line and lets you turn the camera.</p>
     </div>
+    <!--HUD:START--><a class="hud-back" href="../">← Match file</a><!--HUD:END-->
   </header>
 
   <div class="stage" id="stage">
@@ -133,6 +210,13 @@ details ul{margin:10px 0 2px;padding-left:20px;color:var(--ink2);display:grid;ga
     <span><i class="dot" style="background:var(--dark)"></i>Dark team</span>
     <span><i class="dot" style="background:var(--light)"></i>Light team</span>
   </div>
+
+  <!--HUD:START--><div class="hud-strip hud-panel hud-corners" role="img" aria-label="Distance from the goal line: cone line 10.5 m, shooter 15.2 m">
+    <div class="row"><span class="hud-kicker"><b>✶</b> Distance from the goal line (底线)</span><span class="hud-kicker">Scale 0 – 20 m</span></div>
+    <div class="bar"><div class="zone" style="width:52.50%"></div><div class="gap" style="left:52.50%;width:23.50%"></div>
+      <div class="pin" style="left:0"></div><div class="pin cy" style="left:52.50%"></div><div class="pin rd" style="left:76.00%"></div></div>
+    <div class="ticks"><span style="left:0"><b>0 m</b>底线</span><span style="left:52.50%"><b>10.5 m</b>Cone line</span><span style="left:76.00%"><b>15.2 m</b>Shooter</span></div>
+  </div><!--HUD:END-->
 
   <div class="facts">
     <div><span class="k">Verdict</span><span class="n red">Outside</span><span class="s">He struck the ball from behind the cone line, so by the rule it should not count.</span></div>
@@ -181,14 +265,15 @@ window.__boot = function (S) {
   // ---------- world (only while the 3D view shows) ----------
   const world = new THREE.Group(); scene.add(world);
   const T = S.tex, tw = T.X1 - T.X0, td = T.Z1 - T.Z0;
-  const base = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshBasicMaterial({ color: S.grass }));
+  const base = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshBasicMaterial({ color: new THREE.Color(S.grass).multiplyScalar(0.45) }));
   base.rotation.x = -Math.PI / 2; base.position.set(8, -0.02, -40); world.add(base);
+  const grid = new THREE.GridHelper(400, 80, 0x3d4a3a, 0x2c3629); grid.position.set(8, -0.015, -40); grid.material.transparent = true; grid.material.opacity = 0.55; world.add(grid);
   const texture = new THREE.TextureLoader().load('ground.jpg', () => render());
   texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(tw, td), new THREE.MeshBasicMaterial({ map: texture }));
   ground.rotation.x = -Math.PI / 2; ground.position.copy(W2((T.X0 + T.X1) / 2, -0.01, (T.Z0 + T.Z1) / 2)); world.add(ground);
   const sky = (() => { const c = document.createElement('canvas'); c.width = 2; c.height = 256; const g = c.getContext('2d');
-    const gr = g.createLinearGradient(0, 0, 0, 256); gr.addColorStop(0, '#5f8fc4'); gr.addColorStop(1, '#cfe0ee'); g.fillStyle = gr; g.fillRect(0, 0, 2, 256);
+    const gr = g.createLinearGradient(0, 0, 0, 256); gr.addColorStop(0, '#05070a'); gr.addColorStop(0.7, '#141b22'); gr.addColorStop(1, '#3a3530'); g.fillStyle = gr; g.fillRect(0, 0, 2, 256);
     return new THREE.CanvasTexture(c); })();
 
   // goal: goal line runs across the pitch (along N), mouth faces back down the pitch (-U)
@@ -281,7 +366,7 @@ window.__boot = function (S) {
     const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), depthTest: false }));
     sp.scale.set(5.6, 1.12, 1); sp.position.copy(W2(sh[0], 3.4, sh[1])); sp.renderOrder = 6;
     sp.draw = () => { const g = c.getContext('2d'); g.clearRect(0, 0, 640, 128); g.fillStyle = 'rgba(10,18,32,.9)'; g.fillRect(0, 0, 640, 128);
-      g.fillStyle = '#ff4b55'; g.fillRect(0, 0, 14, 128); g.fillStyle = '#fff'; g.font = '800 62px "Barlow Condensed", sans-serif'; g.textBaseline = 'middle';
+      g.fillStyle = '#ff4b55'; g.fillRect(0, 0, 14, 128); g.fillStyle = '#fff'; g.font = '800 62px "Archivo Narrow", sans-serif'; g.textBaseline = 'middle';
       g.fillText(mTxt + ' THE LINE', 34, 66); sp.material.map.needsUpdate = true; };
     sp.draw(); return sp;
   })();
@@ -424,6 +509,14 @@ window.__boot = function (S) {
   window.__replay = { goCam, startReplay, freeze, S, view, zoom };
 };
 </script>
+<!--HUD:START--><script>
+(function () {
+  const run = document.getElementById('hudrun'), items = ["Goal check <em>✶</em> 11:56:06.6", "Dark team shot from the right", "Cone line 10.5 m from 底线", "Shooter 15.2 m from 底线", "Verdict <em>→</em> outside by 4.6 m", "624 frames registered", "Focal 1,385 px · tilt 7.4°", "Every calibration: 4.3 to 4.8 m behind the line"], once = items.map((t) => '<span>' + t + '</span><span>✶</span>').join('');
+  run.innerHTML = once + once;
+  const tc = document.getElementById('hudtc');
+  setInterval(() => { const c = document.getElementById('clk'); if (c) tc.textContent = c.textContent; }, 250);
+})();
+</script><!--HUD:END-->
 <script>
 (async function () {
   const u = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));

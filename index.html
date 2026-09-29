@@ -6,6 +6,7 @@
 <meta name="description" content="Sunday pickup soccer, 9/27. Passcode required."><meta name="robots" content="noindex,nofollow">
 <meta http-equiv="Cache-Control" content="no-cache">
 <title>Sunday Pickup 9/27</title>
+<!--HUD:START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Doto:wght@700;900&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap"><link rel="stylesheet" href="hud.css?v=3"><!--HUD:END-->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 [hidden]{display:none!important}
@@ -224,13 +225,118 @@ h2.sec{font:700 1.5rem/1 var(--display);text-transform:uppercase;margin:4px 0 12
 #lockform{display:flex;gap:8px}#lockin{flex:1;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:6px;font:400 1rem var(--body);background:var(--ground);color:var(--ink)}
 .lockmsg{min-height:1.2em;margin-top:10px!important;color:var(--amber)!important}
 </style>
+<!--HUD:START--><style>
+/* page tokens mapped onto the HUD palette (wins over the light/dark blocks above) */
+:root{--ground:var(--h-bg)!important;--panel:var(--h-panel)!important;--ink:var(--h-ink)!important;--muted:var(--h-ink2)!important;--line:var(--h-line)!important;
+  --turf:var(--h-coral)!important;--turf-ink:#160604!important;--turf-soft:var(--h-coral-soft)!important;
+  --dark-kit:#1d3474!important;--dark-kit-ink:#eaf0ff!important;--light-kit:#ece8e1!important;--light-kit-ink:#0b0c0d!important;
+  --amber:var(--h-amber)!important;--amber-soft:rgba(255,179,71,.12)!important;--red:var(--h-red)!important;
+  --display:var(--h-disp)!important;--body:var(--h-sans)!important;--mono:var(--h-mono)!important;color-scheme:dark}
+body{font-size:15.5px;padding-bottom:40px}
+.appgrid>*{min-width:0}
+.nums{table-layout:fixed;overflow-wrap:anywhere}.nums th:first-child,.nums td:first-child{width:34%}
+@media (max-width:560px){.nums th,.nums td{padding:5px 4px!important;font-size:.82rem}h1{font-size:2.6rem!important}.hud-date{font-size:2.6rem!important}}
+.wrap{padding-inline:clamp(16px,3.2vw,44px)!important;padding-block:34px 70px!important}
+/* header */
+header.top{border-bottom:1px solid var(--h-line)!important;padding-bottom:18px!important;align-items:end!important;position:relative}
+header.top::after{content:"";position:absolute;left:0;bottom:-1px;width:120px;height:1px;background:var(--h-coral);box-shadow:0 0 10px var(--h-coral)}
+.hud-hero{display:flex;flex-direction:column;gap:10px}
+.hud-hero .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h1{font:700 clamp(2.4rem,6vw,4.6rem)/.9 var(--h-disp)!important;letter-spacing:-.01em!important;text-transform:uppercase}
+h1 small{font:500 .78rem/1.3 var(--h-mono)!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--h-ink2)!important;margin-top:12px!important}
+.hud-date{font:900 clamp(2.4rem,6vw,4.6rem)/.9 var(--h-dot);color:var(--h-coral);text-shadow:0 0 18px rgba(255,90,54,.45);letter-spacing:.02em}
+.hud-var{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center;text-decoration:none;color:var(--h-ink);padding:14px 16px;min-width:min(100%,340px);max-width:420px;transition:border-color .2s,background .2s}
+.hud-var:hover{border-color:var(--h-coral)!important;background:#120c0a!important}
+.hud-var .k{grid-column:1/-1}
+.hud-var .big{font:900 2rem/1 var(--h-dot);color:var(--h-coral);text-shadow:0 0 12px rgba(255,90,54,.5)}
+.hud-var .t{font:600 1.15rem/1.1 var(--h-disp);text-transform:uppercase;letter-spacing:.02em}
+.hud-var .t small{display:block;font:400 .72rem/1.4 var(--h-mono);letter-spacing:.1em;color:var(--h-ink2);margin-top:3px}
+.hud-var .go{grid-column:1/-1;font:500 .7rem var(--h-mono);letter-spacing:.16em;color:var(--h-coral);text-transform:uppercase}
+/* section heads and tabs */
+h2.sec,.nteam{font:600 1.6rem/1 var(--h-disp)!important;letter-spacing:.02em!important;display:flex;align-items:center;gap:10px}
+h2.sec::before{content:"";width:.8em;height:.8em;background:var(--h-coral);flex:none;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l2.2 8.1L21 3l-4.6 7.1L24 12l-7.6 1.9L21 21l-6.8-5.1L12 24l-2.2-8.1L3 21l4.6-7.1L0 12l7.6-1.9L3 3l6.8 5.1z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l2.2 8.1L21 3l-4.6 7.1L24 12l-7.6 1.9L21 21l-6.8-5.1L12 24l-2.2-8.1L3 21l4.6-7.1L0 12l7.6-1.9L3 3l6.8 5.1z'/%3E%3C/svg%3E") center/contain no-repeat}
+nav.tabs2{counter-reset:hudtab;border-bottom:1px solid var(--h-line)!important;gap:0!important}
+nav.tabs2 button{counter-increment:hudtab;font:500 .8rem var(--h-mono)!important;letter-spacing:.16em!important;padding:12px 16px!important;border-bottom:2px solid transparent!important;color:var(--h-ink3)!important}
+nav.tabs2 button::before{content:counter(hudtab,decimal-leading-zero) " / ";color:var(--h-ink3)}
+nav.tabs2 button[aria-selected="true"]{color:var(--h-ink)!important;border-bottom-color:var(--h-coral)!important}
+nav.tabs2 button[aria-selected="true"]::before{color:var(--h-coral)}
+/* panels */
+.qabox,.stage,.aw,.pcard,.pc2,.tc,.twocol .tc,.card,.nb,.lockcard,.teamtbl table{background-color:var(--h-panel)!important;border:1px solid var(--h-line)!important;border-radius:2px!important}
+.qabox,.stage,.aw,.pcard,.pc2,.lockcard{background-image:
+  linear-gradient(var(--h-ink3),var(--h-ink3)),linear-gradient(var(--h-ink3),var(--h-ink3)),linear-gradient(var(--h-ink3),var(--h-ink3)),linear-gradient(var(--h-ink3),var(--h-ink3)),
+  linear-gradient(var(--h-ink3),var(--h-ink3)),linear-gradient(var(--h-ink3),var(--h-ink3)),linear-gradient(var(--h-ink3),var(--h-ink3)),linear-gradient(var(--h-ink3),var(--h-ink3))!important;
+  background-repeat:no-repeat!important;background-size:9px 1px,1px 9px,9px 1px,1px 9px,9px 1px,1px 9px,9px 1px,1px 9px!important;
+  background-position:left -1px top -1px,left -1px top -1px,right -1px top -1px,right -1px top -1px,left -1px bottom -1px,left -1px bottom -1px,right -1px bottom -1px,right -1px bottom -1px!important}
+.stage{padding:12px!important}
+.aw:hover,.pcard:hover,.pc2:hover{border-color:var(--h-line2)!important}
+.awt{font:500 .72rem/1.3 var(--h-mono)!important;letter-spacing:.16em!important;color:var(--h-coral)!important}
+.awn,.pcard .nm,.pc2 .nm,.cap b,.current .who{font-family:var(--h-disp)!important;font-weight:600!important;letter-spacing:.01em!important;text-transform:uppercase}
+.awi{background:var(--h-coral-soft)!important;color:var(--h-coral)!important;border-radius:2px!important;font-family:var(--h-dot)!important;font-weight:900!important}
+img{filter:saturate(.88) contrast(1.06)}
+.aw img,.pcard img,.pc2 img,.person img{border-radius:1px!important;outline:1px solid var(--h-line);outline-offset:2px}
+.tc h3{font:600 1.25rem var(--h-disp)!important}
+.tc .lbl2,.pc2 .d,.pcard .d,.note,.cap span{color:var(--h-ink2)!important}
+.pc2 .line,.meta,.seekrow,.tlist .ck,.plist .ck,.plays .ck{font-family:var(--h-mono)!important;letter-spacing:.04em}
+.pcard dl{font:400 .8rem var(--h-mono);letter-spacing:.03em}
+.pcard dt{text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;align-self:center}
+.nums td,.teamtbl td{font-family:var(--h-mono)!important}
+.nums th,.teamtbl th{font:500 .68rem var(--h-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--h-ink3)}
+.kit{border-radius:1px!important;font:500 .66rem/1.5 var(--h-mono)!important;letter-spacing:.14em!important}
+.pill,.v.good,.v.bad,.src{border-radius:1px!important;font-family:var(--h-mono)!important;letter-spacing:.12em!important}
+/* buttons and inputs */
+button{font:500 .74rem var(--h-mono)!important;letter-spacing:.12em!important;text-transform:uppercase;border-radius:1px!important;border-color:var(--h-line2)!important;background:transparent!important;color:var(--h-ink)!important;padding:7px 11px!important}
+button:hover{border-color:var(--h-coral)!important;color:#fff!important}
+button.primary,.choices button.on{background:var(--h-coral)!important;border-color:var(--h-coral)!important;color:#160604!important;box-shadow:0 0 16px rgba(255,90,54,.3)}
+button.n{color:var(--h-coral)!important;border-color:transparent!important;letter-spacing:.02em!important}
+.tabs button[aria-pressed="true"]{background:var(--h-ink)!important;color:var(--h-bg)!important}
+.qachips button{border-radius:1px!important}
+#qain,#tsearch,#lockin,.nb input.nm,.nb input.no,.nb select{background:var(--h-bg)!important;border:1px solid var(--h-line2)!important;border-radius:1px!important;color:var(--h-ink)!important;font-family:var(--h-sans)}
+#qain:focus,#tsearch:focus,#lockin:focus{outline:1px solid var(--h-coral)!important;outline-offset:0!important;border-color:var(--h-coral)!important}
+.tjump{border-radius:1px!important;font-family:var(--h-mono)!important;border-color:rgba(255,90,54,.6)!important}
+/* lists */
+.plist li button,.tlist button,.plays li button,.plist li a,.tlist a{text-transform:none!important;letter-spacing:0!important;font:400 .86rem var(--h-sans)!important;border-color:var(--h-line)!important;padding:7px 4px!important}
+.plist li button.on,.tlist button.on,.plist li a.on{background:var(--h-coral-soft)!important;box-shadow:inset 2px 0 0 var(--h-coral)}
+.trans summary{font:600 1.1rem var(--h-disp)!important}
+/* video: crop marks + segmented seek bar */
+.vbox{border-radius:1px!important;box-shadow:0 0 0 1px var(--h-line2),0 30px 80px -30px rgba(255,90,54,.18)}
+.vbox::after{content:"";position:absolute;inset:8px;pointer-events:none;z-index:2;background-image:
+  linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#fff,#fff);
+  background-repeat:no-repeat;background-size:14px 1px,1px 14px,14px 1px,1px 14px,14px 1px,1px 14px,14px 1px,1px 14px;
+  background-position:left top,left top,right top,right top,left bottom,left bottom,right bottom,right bottom;opacity:.55}
+.vbox .bigplay{border-radius:50%!important;padding:clamp(12px,2vw,20px)!important;background:rgba(6,7,8,.55)!important;border:1px solid rgba(255,255,255,.35)!important;box-shadow:0 0 0 6px rgba(255,255,255,.06),0 0 30px rgba(255,90,54,.25)!important}
+.vbar button,.vbar .vb{background:none!important;border:0!important;padding:6px!important;letter-spacing:0!important}
+.vtime{font-family:var(--h-mono)!important;letter-spacing:.08em}
+.vbox .sub .ln{border-radius:1px!important;background:rgba(6,7,8,.72)!important;font-family:var(--h-sans)!important}
+input[type=range]#seek{-webkit-appearance:none;appearance:none;height:16px;background:transparent}
+#seek::-webkit-slider-runnable-track{height:8px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0 5px,transparent 5px 7px)}
+#seek::-moz-range-track{height:8px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0 5px,transparent 5px 7px)}
+#seek::-webkit-slider-thumb{-webkit-appearance:none;width:3px;height:16px;margin-top:-4px;background:var(--h-coral);box-shadow:0 0 10px var(--h-coral);border:0}
+#seek::-moz-range-thumb{width:3px;height:16px;background:var(--h-coral);border:0;border-radius:0;box-shadow:0 0 10px var(--h-coral)}
+.seekbreaks span{background:var(--h-amber)!important;opacity:.7!important;border-radius:0!important}
+/* status + lock screen */
+.status{background:var(--h-panel2)!important;border:1px solid var(--h-line)!important;border-radius:1px!important;font-family:var(--h-mono);font-size:.8rem!important;letter-spacing:.06em}
+.lockgate{background:transparent!important}
+.lockcard{padding:34px 28px!important;text-align:left!important}
+.lockcard h1{font:700 2.6rem/.95 var(--h-disp)!important}
+.lockcard p{color:var(--h-ink2)!important;font-size:.9rem}
+.qa{border-color:var(--h-line)!important}
+</style><!--HUD:END-->
 
 </head>
 <body>
-<div id="lockgate" class="lockgate" hidden><div class="lockcard"><h1>Sunday Pickup 9/27</h1><p>This match file is for the players. Enter the passcode to open it.</p>
+<!--HUD:START--><div class="hud-screen" aria-hidden="true"></div>
+<div class="hud-frame" aria-hidden="true"><span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
+<span class="lab l1">File 09 / 27 · Sunday pickup</span><span class="lab l2">Dark <i>✶</i> Light · 10:16 → 12:00</span>
+<div class="hud-ruler"><b style="top:0">000</b><b style="top:25%">025</b><b style="top:50%">050</b><b style="top:75%">075</b><span class="mk" id="hudmk" style="top:0"></span></div></div>
+<div class="hud-ticker" aria-hidden="true"><div class="run" id="hudrun"></div><div class="tc" id="hudtc">10:16:46</div></div><!--HUD:END-->
+<div id="lockgate" class="lockgate" hidden><div class="lockcard"><div class="hud-kicker" style="margin-bottom:12px"><b>✶</b> Restricted · players only</div><h1>Sunday Pickup <span class="hud-date" style="font-size:1em">09/27</span></h1><p>This match file is for the players. Enter the passcode to open it.</p>
 <form id="lockform"><input id="lockin" type="password" placeholder="Passcode" aria-label="Passcode" autocomplete="current-password"><button class="primary" type="submit">Open</button></form><p id="lockmsg" class="lockmsg"></p></div></div>
 <div class="wrap">
-  <header class="top"><h1>Match File 9/27<small id="sub">Pickup game, dark vs light</small></h1></header>
+  <header class="top"><!--HUD:START--><div class="hud-hero"><div class="hud-kicker"><b>✶</b> Sunday pickup · match file · dark vs light</div>
+    <div class="row"><h1>Match File <span class="hud-date">09/27</span><small id="sub">Pickup game, dark vs light</small></h1></div></div>
+    <a class="hud-var hud-panel hud-corners" href="replay/"><span class="k hud-kicker"><b>Replay</b> · disputed goal</span><span class="big">11:56</span><span class="t">Goal check<small>Shot from 4.6 m behind the cone line</small></span><span class="go">Open the 3D replay →</span></a><!--HUD:END--></header>
   <p class="status" id="status" hidden></p>
   <div class="appgrid">
     <main>
@@ -782,5 +888,18 @@ start();
 
 </script>
 
+<!--HUD:START--><script>
+(function () {
+  const run = document.getElementById('hudrun'), items = ["Sunday pickup <em>✶</em> 09.27.2026", "Kickoff 10:16:46", "Dark vs light", "4 stretches", "3 water breaks", "1:43:54 of footage", "Full game video + Mandarin subtitles", "Disputed goal 11:56:06 <em>→</em> 4.6 m behind the cone line", "Ask the AI anything about the game", "Player nicknames + awards"];
+  const once = items.map((t) => '<span>' + t + '</span><span>✶</span>').join('');
+  run.innerHTML = once + once;
+  const tc = document.getElementById('hudtc'), mk = document.getElementById('hudmk');
+  setInterval(() => {
+    const t = document.getElementById('seekt'), seek = document.getElementById('seek');
+    if (t && t.textContent) tc.textContent = t.textContent;
+    if (seek && mk) mk.style.top = (100 * seek.value / (seek.max || 1)) + '%';
+  }, 400);
+})();
+</script><!--HUD:END-->
 </body>
 </html>
